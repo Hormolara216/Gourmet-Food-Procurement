@@ -1,0 +1,74 @@
+{
+	"name": "datasetAzureSqlTable4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabasenew",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Agency",
+				"type": "varchar"
+			},
+			{
+				"name": "Time_Period",
+				"type": "varchar"
+			},
+			{
+				"name": "Food_Product_Group",
+				"type": "varchar"
+			},
+			{
+				"name": "Food_Product_Category",
+				"type": "varchar"
+			},
+			{
+				"name": "Product_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Product_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Origin_Detail",
+				"type": "varchar"
+			},
+			{
+				"name": "Distributor",
+				"type": "varchar"
+			},
+			{
+				"name": "Vendor",
+				"type": "varchar"
+			},
+			{
+				"name": "Quantity_Units_Procured",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Total_Weight_in_lbs",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Total_Cost",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "FOODPURCHASED"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

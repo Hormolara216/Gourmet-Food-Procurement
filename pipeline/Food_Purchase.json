@@ -195,7 +195,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "datasetAzureSqlTable1",
+						"referenceName": "datasetAzureSqlTable4",
 						"type": "DatasetReference"
 					}
 				]
@@ -233,7 +233,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2024-01-31T14:49:15Z"
+		"lastPublishTime": "2024-01-31T16:11:41Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

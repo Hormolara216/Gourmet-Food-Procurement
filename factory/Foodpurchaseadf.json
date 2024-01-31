@@ -1,0 +1,9 @@
+{
+	"name": "Foodpurchaseadf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5b2ab3ae-e7e4-4370-9af8-0350cd603c84",
+		"tenantId": "3a51ddce-b3a7-4da3-bea1-ae157dba8d18"
+	}
+}

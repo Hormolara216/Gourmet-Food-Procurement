@@ -1,0 +1,73 @@
+{
+	"name": "csv_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedAzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Purchased_food_Data.csv",
+				"container": "input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Agency",
+				"type": "String"
+			},
+			{
+				"name": "Time Period",
+				"type": "String"
+			},
+			{
+				"name": "Food Product Group",
+				"type": "String"
+			},
+			{
+				"name": "Food Product Category",
+				"type": "String"
+			},
+			{
+				"name": "Product Name",
+				"type": "String"
+			},
+			{
+				"name": "Product Type",
+				"type": "String"
+			},
+			{
+				"name": "Origin Detail",
+				"type": "String"
+			},
+			{
+				"name": "Distributor",
+				"type": "String"
+			},
+			{
+				"name": "Vendor",
+				"type": "String"
+			},
+			{
+				"name": "# of Units",
+				"type": "String"
+			},
+			{
+				"name": "Total Weight in lbs",
+				"type": "String"
+			},
+			{
+				"name": "Total Cost",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

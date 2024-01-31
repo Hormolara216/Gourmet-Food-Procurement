@@ -1,0 +1,70 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"name": "source"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "sinkDelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "sink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "sort"
+				},
+				{
+					"name": "ifisnullDistributor"
+				},
+				{
+					"name": "ifnullVendor"
+				},
+				{
+					"name": "filter"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          ID as integer,",
+				"          Agency as string,",
+				"          Time_Period as string,",
+				"          Food_Product_Group as string,",
+				"          Food_Product_Category as string,",
+				"          Product_Name as string,",
+				"          Product_Type as string,",
+				"          Origin_Detail as string,",
+				"          Distributor as string,",
+				"          Vendor as string,",
+				"          Quantity_Units_Procured as integer,",
+				"          Total_Weight_in_lbs as integer,",
+				"          Total_Cost as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source",
+				"filter sort(desc(Quantity_Units_Procured, true)) ~> sort",
+				"source derive(check_distributor_ifnull = iif(isNull(Distributor), '',Distributor )) ~> ifisnullDistributor",
+				"ifisnullDistributor derive(check_vendor_ifnull = iif(isNull(Vendor), '', Vendor)) ~> ifnullVendor",
+				"ifnullVendor filter(Agency==\"Human Resources Administration\" && Total_Cost >33250 && check_distributor_ifnull != '' && check_vendor_ifnull !='') ~> filter",
+				"sort sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink"
+			]
+		}
+	}
+}
